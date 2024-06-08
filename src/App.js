@@ -9,7 +9,13 @@ function App() {
 
   const fetchNumbers = async (numberType) => {
     try {
-      const response = await axios.get(`http://20.244.56.144/test/${numberType}`);
+      const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJNYXBDbGFpbXMiOnsiZXhwIjoxNzE3ODIyNjg3LCJpYXQiOjE3MTc4MjIzODcsImlzcyI6IkFmZm9yZG1lZCIsImp0aSI6IjZjZDYzNTcwLWZkNzQtNGVlNC05OTUwLWRiNDRhNTZjMmRmNCIsInN1YiI6Imt1c2h3YWhhcHJhdmVlbjA1MDdAZ21haWwuY29tIn0sImNvbXBhbnlOYW1lIjoiQUtHRUMiLCJjbGllbnRJRCI6IjZjZDYzNTcwLWZkNzQtNGVlNC05OTUwLWRiNDRhNTZjMmRmNCIsImNsaWVudFNlY3JldCI6IlNLbXVXVFl3Sk1zWkJOemgiLCJvd25lck5hbWUiOiJQcmF2ZWVuIEt1c2h3YWhhIiwib3duZXJFbWFpbCI6Imt1c2h3YWhhcHJhdmVlbjA1MDdAZ21haWwuY29tIiwicm9sbE5vIjoiMjEwMDI3MDEzMDEzMiJ9.dzHYQ_IITbTgd-S58SLH3MeJxhsGuiT3ChS37-5Ma60"
+      const response = await axios.get(`http://20.244.56.144/test/${numberType}`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+
       const data = response.data;
       setPrevWindowState(data.windowPrevState);
       setCurrWindowState(data.windowCurrState);
